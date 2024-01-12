@@ -1,6 +1,6 @@
 # Title
 
-This a Tetris Game
+This a Tetris Game with JavaScript and HTML5.
 
 ## Install
 
