@@ -34,8 +34,8 @@
     let COLUMN;
     const COL = COLUMN = 10;
     let squareSize;
-    const SQ = squareSize = 25;
-    const VACANT = "WHITE"; // color of an empty square
+    const SQUARE_SIZE = squareSize = 25;
+    const VACANT = "LIGHTBLUE"; // color of an empty square
     let score = 0;
 
     createHDCanvas(cvs, ctx)
@@ -50,16 +50,17 @@
     }
 
 
-    // draw a square
+    // draw a square，这里x和y指的是绘制的初始位置，就是左上角的坐标
     function drawSquare(x, y, color) {
+        // 绘制背景
         ctx.fillStyle = color;
-        ctx.fillRect(x * SQ + window.innerWidth / 2.5, y * SQ, SQ, SQ);
-
+        ctx.fillRect(x * SQUARE_SIZE + window.innerWidth / 2.5, y * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
+        // 绘制边框
         ctx.strokeStyle = "BLACK";
-        ctx.strokeRect(x * SQ + window.innerWidth / 2.5, y * SQ, SQ, SQ);
+        ctx.strokeRect(x * SQUARE_SIZE + window.innerWidth / 2.5, y * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
     }
 
-    // create the board
+    // 存储每个board的颜色
     let board = [];
     for (let r = 0; r < ROW; r++) {
         board[r] = [];
@@ -87,9 +88,9 @@
         this.tetrominoN = 0; // we start from the first pattern
         this.activeTetromino = this.tetromino[this.tetrominoN];
 
-        // we need to control the pieces
+        // 从第几行/第几列开始绘制
         this.x = 3;
-        this.y = -2;
+        this.y = -1;
     }
 
     // fill function
